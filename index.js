@@ -3,18 +3,18 @@ const express = require('express');
 const mongoose = require('mongoose');
 const Book = require('./models/book');
 const app = express();
-const URI = process.env.MONGODB_URI
+const URI = process.env.MONGODB_URI;
 
 mongoose.connect(URI)
 const database = mongoose.connection
 
 database.on('err', (err) => {
     console.log(err)
-})
+});
 
 database.once('connected', () => { 
     console.log('Database Connected to the server');
-})
+});
 
 app.use(express.json())
 
@@ -33,7 +33,7 @@ app.get('/', (req, res) => {
     }
   });
   
-  // Get all books
+// Get all books
 app.get('/books', async (req, res) => {
     try {
       const books = await Book.find();
@@ -71,4 +71,4 @@ app.get('/books', async (req, res) => {
 
 app.listen(3000, (req, res) => {
   console.log('Server is listening on port 3000');
-}); 
+});  
