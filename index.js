@@ -12,7 +12,7 @@ database.on('err', (err) => {
     console.log(err)
 })
 
-database.once('connected', () => {
+database.once('connected', () => { 
     console.log('Database Connected to the server');
 })
 
